@@ -4,7 +4,7 @@
 import praw
 import numpy as np
 import pandas as pd
-
+import datetime as dt
 def ScrapeReddit(subreddit): #function for scraping a desired subreddit. Will be utilized in the GUI when the Scrape Reddit option is selected. subreddit parameter is the user input for the sub that will be scraped
 
     reddit = praw.Reddit (client_id = "hsPskyIcTh7EqA" ,
@@ -14,7 +14,7 @@ def ScrapeReddit(subreddit): #function for scraping a desired subreddit. Will be
                     user_agent = "ITMS 448 Scraper")
 
     sub=reddit.subreddit(subreddit) #accesses specified subreddit and stores it in variable sub
-    sub_hot = sub.hot(limit = 7) #goes throught the 5 hottest posts in specifed sub reddit that will be scraped
+    sub_hot = sub.hot(limit = 5) #goes throught the 5 hottest posts in specifed sub reddit that will be scraped
     #array to store the scraped values of each post
     posts_array = {"post_title":[],  #title of post
                     "post_body":[], #body of post
@@ -30,7 +30,7 @@ def ScrapeReddit(subreddit): #function for scraping a desired subreddit. Will be
             posts_array["comment_num"].append(submission.num_comments)
             posts_array["karma"].append(submission.score)
             posts_array["link"].append(submission.url)
-            posts_array["post_date"].append(submission.created)
+            posts_array["post_date"].append(dt.datetime.fromtimestamp(submission.created))
     np.set_printoptions(threshold=np.inf)
     print(posts_array)
 
