@@ -2,7 +2,7 @@
 #Programmed by Asim Hyder
 
 import praw
-import numpy as np
+import numpy as np #used strictly for testing
 import pandas as pd
 import datetime as dt
 def ScrapeReddit(subreddit, keyword): #function for scraping a desired subreddit. Will be utilized in the GUI when the Scrape Reddit option is selected. subreddit parameter is the user input for the sub that will be scraped
@@ -26,7 +26,7 @@ def ScrapeReddit(subreddit, keyword): #function for scraping a desired subreddit
                     "post_date":[]} #date posted
 
     for submission in sub_hot: #prints the post IDs for the 5 hottest posts in the specified sub
-            if keyword in submission.title or submission.selftext: #only appends posts that have the keyword input the user provides
+            if keyword in submission.title or submission.selftext: #only appends posts that have the keyword input the user provides in either the title or the body (or both)
                 posts_array["post_title"].append(submission.title)
                 posts_array["post_body"].append(submission.selftext)
                 posts_array["post_author"].append(submission.author)
@@ -39,11 +39,12 @@ def ScrapeReddit(subreddit, keyword): #function for scraping a desired subreddit
     scraped=pd.DataFrame(posts_array)
     scraped.to_csv('%s.csv' %(subreddit), index=False) #exports the array of scraped data to a CSV file
 
-    #np.set_printoptions(threshold=np.inf) #this is here for testing purposes
+    #this is here for testing purposes
+    #np.set_printoptions(threshold=np.inf) 
     #print(posts_array)
 
 #anything below this line is for testing purposes. the function will be implemented in the GUI and not the class iteself
-scansub = input("Enter subreddit to scrape: ")
-scankey = input("Enter keyword to search for: ")
-ScrapeReddit(scansub, scankey)
+#scansub = input("Enter subreddit to scrape: ")
+#scankey = input("Enter keyword to search for: ")
+#ScrapeReddit(scansub, scankey)
 
