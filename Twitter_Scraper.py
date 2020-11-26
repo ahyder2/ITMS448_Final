@@ -18,21 +18,22 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 
 # Search query and tweet count parameters
 search_queries = 'covid OR #covid19'
-tweetCount = 1
+tweetCount = 10
 
 try:
+
     # Creation of query method using parameters
     tweets = tweepy.Cursor(api.search, q=search_queries).items(tweetCount)
 
     # Pulling information from tweets iterable object
-    tweets_list = [[tweet.id, tweet.text, tweet.user, tweet.user.followers_count, tweet.favorite_count, tweet.retweet_count, tweet.created_at] for tweet in tweets]
+    tweets_list = [[tweet.id, tweet.user, tweet.text, tweet.user.followers_count, tweet.favorite_count, tweet.retweet_count, tweet.created_at] for tweet in tweets]
 
     # Creation of dataframe from tweets list
     # Add or remove columns as you remove tweet information
     tweets_df = pd.DataFrame(tweets_list)
 
     # Print out scraped tweets list
-    print(tweets_list)
+    print(tweets_df)
  
 except BaseException as e:
     # Error handling
