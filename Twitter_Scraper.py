@@ -19,27 +19,32 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 
 # Search query and tweet count parameters
 search_queries = 'covid OR #covid19 OR covid-19 OR #covid-19 OR coronavirus OR #coronavirus'
-tweetCount = 100
+tweetCount = 50
 
 # Start runtime
 run_start = time.time()
 
-try:
-    # Create tweet query method using API methods and parameters
-    tweets = tweepy.Cursor(api.search, q=search_queries).items(tweetCount)
+# Twitter scraper function
+def scrapeTwitter():
+    try:
+        # Create tweet query method using API methods and parameters
+        tweets = tweepy.Cursor(api.search, q=search_queries).items(tweetCount)
 
-    # Pulling information from tweets iterable object into a tweets list
-    tweets_list = [[tweet.id, tweet.user, tweet.text, tweet.user.followers_count, tweet.favorite_count, tweet.retweet_count, tweet.created_at] for tweet in tweets]
+        # Pulling information from tweets iterable object into a tweets list
+        tweets_list = [[tweet.id, tweet.user, tweet.text, tweet.user.followers_count, tweet.favorite_count, tweet.retweet_count, tweet.created_at] for tweet in tweets]
 
-    # Create dataframe from tweets list
-    tweets_df = pd.DataFrame(tweets_list)
+        # Create dataframe from tweets list
+        tweets_df = pd.DataFrame(tweets_list)
 
-    # Print out data frame of scraped tweets list
-    print(tweets_df)
-except BaseException as e:
-    # Error handling
-    print('failed to scrape,', str(e))
-    time.sleep(3)
+        # Print out data frame of scraped tweets list
+        print(tweets_df)
+    except BaseException as e:
+        # Error handling
+        print('failed to scrape,', str(e))
+        time.sleep(3)
+
+# Call to scraper function
+scrapeTwitter()
 
 # End runtime
 run_end = time.time()
