@@ -31,8 +31,12 @@ def ScrapeReddit(subreddit): #function for scraping a desired subreddit. Will be
             posts_array["karma"].append(submission.score)
             posts_array["link"].append(submission.url)
             posts_array["post_date"].append(dt.datetime.fromtimestamp(submission.created))
-    np.set_printoptions(threshold=np.inf)
-    print(posts_array)
+
+    scraped=pd.DataFrame(posts_array)
+    scraped.to_csv('%s.csv' %(subreddit), index=False) #exports the array of scraped data to a CSV file
+
+    #np.set_printoptions(threshold=np.inf) #this is here for testing purposes
+    #print(posts_array)
 
 #anything below this line is for testing purposes. the function will be implemented in the GUI and not the class iteself
 scansub = input("Enter subreddit to scrape: ")
