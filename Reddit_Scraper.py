@@ -14,7 +14,7 @@ def ScrapeReddit(subreddit): #function for scraping a desired subreddit. Will be
                     user_agent = "ITMS 448 Scraper")
 
     sub=reddit.subreddit(subreddit) #accesses specified subreddit and stores it in variable sub
-    sub_hot = sub.hot(limit = 5) #goes throught the 5 hottest posts in specifed sub reddit that will be scraped
+    sub_hot = sub.hot(limit = 100) #goes throught the 5 hottest posts in specifed sub reddit that will be scraped
     #array to store the scraped values of each post
     posts_array = {"post_title":[],  #title of post
                     "post_body":[], #body of post
