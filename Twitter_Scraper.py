@@ -17,8 +17,8 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
 # Search query and tweet count parameters
-search_queries = 'covid OR #covid19'
-tweetCount = 10
+search_queries = 'covid OR #covid19 OR covid-19 OR #covid-19 OR coronavirus OR #coronavirus'
+tweetCount = 50
 
 try:
 
@@ -32,7 +32,7 @@ try:
     # Add or remove columns as you remove tweet information
     tweets_df = pd.DataFrame(tweets_list)
 
-    # Print out scraped tweets list
+    # Print out data frame of scraped tweets list
     print(tweets_df)
  
 except BaseException as e:
