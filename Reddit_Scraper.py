@@ -46,7 +46,7 @@ def ScrapeReddit(subreddit, keyword): #function for scraping a desired subreddit
 #anything below this line is for testing purposes. the function will be implemented in the GUI and not the class iteself
 #scansub = input("Enter subreddit to scrape: ")
 #scankey = input("Enter keyword to search for: ")
-scansub = "nba" #hardcode for GUI test
-scankey = "salary" #hardcode for GUI test
-ScrapeReddit(scansub, scankey)
+#scansub = "nba" #hardcode for GUI test
+#scankey = "salary" #hardcode for GUI test
+#ScrapeReddit(scansub, scankey)
 
