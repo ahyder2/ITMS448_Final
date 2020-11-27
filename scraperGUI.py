@@ -1,15 +1,26 @@
+#Programmed by Desmond Mair
+
 import tkinter as tk
-from Reddit_Scraper import *
-from Twitter_Scraper import *
+from Reddit_Scraper import ScrapeReddit
+from Twitter_Scraper import scrapeTwitter
 
 #Function for the exit button
 def close_app():
     window.destroy()
 
+def run_twitter_scrape():
+    scrapeTwitter()
+
+def run_reddit_scrape():
+    strSubreddit = str(subinputstr_entry.get())
+    strKey = str(subkeystr_entry.get())
+
+    ScrapeReddit(strSubreddit, strKey)
+
 window = tk.Tk()
 
 #Setting up the sections for the GUI
-window.title("Web Scraper Tool 1.0")
+window.title("Web Scraper Tool 1.0 (ITMS448 OSINT PROJECT")
 window.resizable("false", "false")
 frameHeader = tk.Frame(master = window, borderwidth = 2, pady = 2)
 centerFrame = tk.Frame(window, borderwidth = 2, pady = 2)
@@ -43,11 +54,11 @@ subkey.pack(side = "left")
 subkeystr_entry.pack(side = "right", padx = 1)
 
 #Button to run the Twitter Scraper
-button_run1 = tk.Button(bottomFrame, text = "Twitter", command = scrapeTwitter, bg = 'light blue', fg = 'black', relief = 'raised', width = 10, font = ('Helvetica 9 bold'))
+button_run1 = tk.Button(bottomFrame, text = "Twitter", command = run_twitter_scrape(), bg = 'light blue', fg = 'black', relief = 'raised', width = 10, font = ('Helvetica 9 bold'))
 button_run1.grid(column = 0, row = 0, sticky = 'w', padx = 100, pady = 2)
 
 #Button to run the Reddit Scraper
-button_run2 = tk.Button(bottomFrame, text = "Reddit", command = ScrapeReddit(subinputstr, subkeystr), bg = 'red', fg = 'black', relief = 'raised', width = 10, font = ('Helvetica 9 bold'))
+button_run2 = tk.Button(bottomFrame, text = "Reddit", command = run_reddit_scrape(), bg = 'red', fg = 'black', relief = 'raised', width = 10, font = ('Helvetica 9 bold'))
 button_run2.grid(column = 1, row = 0, sticky = 'w', padx = 100, pady = 2)
 
 #Exit button
