@@ -43,12 +43,9 @@ def scrapeTwitter():
         print('failed to scrape,', str(e))
         time.sleep(3)
 
-# Call to scraper function
-scrapeTwitter()
+    # End runtime
+    run_end = time.time()
 
-# End runtime
-run_end = time.time()
-
-# Display runtime duration
-run_duration = round((run_end-run_start)/60, 2)
-print("Scrape runtime:", run_duration)
+    # Display runtime duration
+    run_duration = round((run_end-run_start)/60, 2)
+    print("Scrape runtime:", run_duration)
