@@ -54,11 +54,11 @@ subkey.pack(side = "left")
 subkeystr_entry.pack(side = "right", padx = 1)
 
 #Button to run the Twitter Scraper
-button_run1 = tk.Button(bottomFrame, text = "Twitter", command = run_twitter_scrape(), bg = 'light blue', fg = 'black', relief = 'raised', width = 10, font = ('Helvetica 9 bold'))
+button_run1 = tk.Button(bottomFrame, text = "Twitter", command = run_twitter_scrape, bg = 'light blue', fg = 'black', relief = 'raised', width = 10, font = ('Helvetica 9 bold'))
 button_run1.grid(column = 0, row = 0, sticky = 'w', padx = 100, pady = 2)
 
 #Button to run the Reddit Scraper
-button_run2 = tk.Button(bottomFrame, text = "Reddit", command = run_reddit_scrape(), bg = 'red', fg = 'black', relief = 'raised', width = 10, font = ('Helvetica 9 bold'))
+button_run2 = tk.Button(bottomFrame, text = "Reddit", command = run_reddit_scrape, bg = 'red', fg = 'black', relief = 'raised', width = 10, font = ('Helvetica 9 bold'))
 button_run2.grid(column = 1, row = 0, sticky = 'w', padx = 100, pady = 2)
 
 #Exit button
