@@ -37,7 +37,8 @@ def scrapeTwitter():
         tweets_df = pd.DataFrame(tweets_list)
 
         # Print out data frame of scraped tweets list
-        print(tweets_df)
+        #print(tweets_df)
+        tweets_df.to_csv('twitter_covid.csv', index=False)
     except BaseException as e:
         # Error handling
         print('failed to scrape,', str(e))
