@@ -19,7 +19,7 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 
 # Search query and tweet count parameters
 search_queries = 'covid OR #covid19 OR covid-19 OR #covid-19 OR coronavirus OR #coronavirus'
-tweetCount = 50
+tweetCount = 100
 
 # Start runtime
 run_start = time.time()
