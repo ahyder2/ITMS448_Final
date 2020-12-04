@@ -18,17 +18,17 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
 # Search query and tweet count parameters
-search_queries = 'covid OR #covid19 OR covid-19 OR #covid-19 OR coronavirus OR #coronavirus'
+#search_queries = 'covid OR #covid19 OR covid-19 OR #covid-19 OR coronavirus OR #coronavirus'
 tweetCount = 100
 
 # Start runtime
 run_start = time.time()
 
 # Twitter scraper function
-def scrapeTwitter():
+def scrapeTwitter(keyword):
     try:
         # Create tweet query method using API methods and parameters
-        tweets = tweepy.Cursor(api.search, q=search_queries).items(tweetCount)
+        tweets = tweepy.Cursor(api.search, q=keyword).items(tweetCount)
 
         # Pulling information from tweets iterable object into a tweets list
         tweets_list = [[tweet.id, tweet.user, tweet.text, tweet.user.followers_count, tweet.favorite_count, tweet.retweet_count, tweet.created_at] for tweet in tweets]

@@ -9,7 +9,7 @@ def close_app():
     window.destroy()
 
 def run_twitter_scrape():
-    scrapeTwitter()
+    scrapeTwitter(subkeystr_entry.get())
 
 def run_reddit_scrape():
     strSubreddit = str(subinputstr_entry.get())
