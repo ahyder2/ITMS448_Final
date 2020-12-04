@@ -38,7 +38,7 @@ def scrapeTwitter(keyword):
 
         # Print out data frame of scraped tweets list
         #print(tweets_df)
-        tweets_df.to_csv('twitter_covid.csv', index=False)
+        tweets_df.to_csv('%s.csv' %(keyword), index=False)
     except BaseException as e:
         # Error handling
         print('failed to scrape,', str(e))
